@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: 
+      background:
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('https://files.catbox.moe/jtfh38.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -352,29 +353,31 @@
     }
 
     @media (max-width: 768px) {
-      .main-box, .audio-player-container {
+
+      .main-box,
+      .audio-player-container {
         width: 100%;
         min-width: auto;
         padding: 20px;
       }
-      
+
       .dashboard-title h1 {
         font-size: 2rem;
       }
-      
+
       .box-header h2 {
         font-size: 1.5rem;
       }
-      
+
       .input-container {
         flex-direction: column;
       }
-      
+
       .input-container input {
         width: 100%;
         border-radius: 12px 12px 0 0;
       }
-      
+
       .input-container button {
         width: 100%;
         border-radius: 0 0 12px 12px;
@@ -389,74 +392,77 @@
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="dashboard-title">
       <h1>VIPER MD SESSION PAIR</h1>
       <p>Advanced WhatsApp pairing system for secure connections</p>
     </div>
-    
+
     <div class="main-box">
       <div class="box-header">
         <i class="fas fa-user-shield"></i>
         <h2>Pair Your Device</h2>
       </div>
-      
+
       <p class="subtitle">
         Enter your WhatsApp number with country code to generate a pairing code.
         The code will be sent to your WhatsApp account for verification.
       </p>
-      
+
       <h6 style="color: #ddd; margin-bottom: 10px;">Enter Your Number with Country Code.</h6>
-      
+
       <div class="input-container">
-        <input placeholder="25575259xxxx" type="number" id="number" placeholder="Enter your Phone Number with Country Code" name="">
+        <input placeholder="25575259xxxx" type="number" id="number"
+          placeholder="Enter your Phone Number with Country Code" name="">
         <button id="submit">Submit</button>
       </div>
 
-      <a id="waiting-message" class="centered-text" style="display: none; color: #ffd43b; margin-top: 15px;">Please wait a while</a>
-      
+      <a id="waiting-message" class="centered-text" style="display: none; color: #ffd43b; margin-top: 15px;">Please wait
+        a while</a>
+
       <div class="result-container">
         <main id="pair">
           <p style="color: #aaa;">Your pairing code will appear here</p>
         </main>
       </div>
-      
+
       <div class="footer">
         <p>Coded by <strong>VIPER MD</strong> • Secure pairing system</p>
       </div>
     </div>
-    
+
     <div class="audio-player-container">
       <h3><i class="fas fa-music"></i> Background Music</h3>
       <p class="subtitle">Enjoy relaxing background music while using the dashboard. You can control playback below.</p>
-      
+
       <div class="audio-player">
         <div class="player-controls">
           <button class="play-btn" id="playBtn">
             <i class="fas fa-play"></i>
           </button>
-            <div class="track-info">
+          <div class="track-info">
             <div class="track-title">Ambient Vibes</div>
             <div class="track-artist">VIPER MD Studio</div>
           </div>
         </div>
-        
+
         <div class="progress-bar">
           <div class="progress" id="progress"></div>
         </div>
-        
+
         <div class="time-info">
           <span id="currentTime">0:00</span>
           <span id="duration">0:00</span>
         </div>
-        
+
         <div class="volume-control">
           <i class="fas fa-volume-up"></i>
           <input type="range" id="volumeSlider" min="0" max="100" value="50">
         </div>
       </div>
-      
+
       <div class="footer">
         <p>Background music enhances your pairing experience</p>
       </div>
@@ -487,7 +493,7 @@
     const volumeSlider = document.getElementById('volumeSlider');
 
     // Auto-play the audio when page loads - FEATURE MPYA
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
       audio.play().catch(e => {
         console.log("Autoplay prevented. User interaction required.");
         playIcon.classList.remove('fa-pause');
@@ -511,11 +517,11 @@
       if (!isNaN(audio.duration)) {
         durationEl.textContent = formatTime(audio.duration);
       }
-      
+
       // Update progress bar
       const progressPercent = (audio.currentTime / audio.duration) * 100;
       progressBar.style.width = `${progressPercent}%`;
-      
+
       // Update current time
       currentTimeEl.textContent = formatTime(audio.currentTime);
     }
@@ -588,22 +594,23 @@
         c.type = "text";
         c.value = "+" + bb;
         c.style = "color:red;font-size:20px";
-        
+
         // Show waiting message
         waitingMessage.style.display = "block";
         a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
-        
+
         // Use the original axios call - SAME AS BEFORE
         let { data } = await axios(`/code?number=${starboy}`);
         let code = data.code || "Service Unavailable";
-        
+
         // Hide waiting message
         waitingMessage.style.display = "none";
-        
+
         // Display the code with the original Copy function
         a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
       }
     });
   </script>
 </body>
+
 </html>
