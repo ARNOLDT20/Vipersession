@@ -1,12 +1,15 @@
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Web Page for Tech Expert Md developed by Fredi Ai/Fee Tech from Tanzania" />
-  <title>TECH EXPERT PAGE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet" />
+  <meta name="description" content="Web Page for VIPER MD developed by Starboy Ai/Fee Tech from Tanzania" />
+  <title>VIPER MD PAGE</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-<style>
+  <style>
     :root {
       --primary: linear-gradient(135deg, #FF4500, #228B22);
       --bg: #202020;
@@ -20,7 +23,9 @@
       --glow: 0 0 15px rgba(0, 212, 255, 0.3);
     }
 
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -226,7 +231,7 @@
     .progress {
       width: 300px;
       height: 6px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 3px;
       overflow: hidden;
       position: relative;
@@ -299,48 +304,49 @@
         flex-direction: column;
         gap: 1rem;
       }
-      
+
       main {
         padding: 1.5rem;
       }
-      
+
       .tools {
         grid-template-columns: 1fr;
       }
-      
+
       .track {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
       }
-      
+
       .progress {
         width: 100%;
       }
-      
+
       .controls {
         width: 100%;
         justify-content: space-between;
       }
     }
-       .menu-footer {
+
+    .menu-footer {
       padding: 15px;
       text-align: center;
       font-size: 12px;
       color: rgba(255, 255, 255, 0.5);
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-   @media (max-width: 600px) {
+    }
+
+    @media (max-width: 600px) {
       .menu-items {
-       grid-template-columns: 1fr;
-            }
-            
-   .user-info {
-      flex-direction: column;
-            }
-        }
-  
+        grid-template-columns: 1fr;
+      }
+
+      .user-info {
+        flex-direction: column;
+      }
+    }
+
     .contact-fab {
       position: fixed;
       bottom: 15px;
@@ -367,11 +373,12 @@
         font-size: 13px;
       }
     }
-  </style>  
+  </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">Tech Expert Md</div>
+    <div class="logo">VIPER MD</div>
     <div class="status">
       <div class="status-item"><i class="fas fa-bolt"></i> <span id="battery">--%</span></div>
       <div class="status-item"><i class="fas fa-wifi"></i> <span id="ip">Loading...</span></div>
@@ -380,7 +387,7 @@
 
   <main>
     <div class="tools">
-      <div class="tool" onclick="window.open(`/pair`)">
+      <div class="tool" onclick="window.open(`/pair.js`)">
         <i class="fas fa-link"></i>
         <h3>PAIR CODE</h3>
         <p class="muted">Connect to WhatsApp by pairing your code</p>
@@ -395,12 +402,12 @@
         <h3>For deployment fork repo here</h3>
         <p class="muted">Expert MD repo</p>
       </div>
-            <div class="tool" onclick="window.open(`https://whatsapp.com/channel/0029VbA1jdkDp2QAvGIIrL0m`)">
+      <div class="tool" onclick="window.open(`https://whatsapp.com/channel/0029Vb6H6jF9hXEzZFlD6F3d`)">
         <i class="fab fa-whatsapp"></i>
         <h3>For bot updates and deployment</h3>
         <p class="muted">WhatsApp Channel</p>
       </div>
-      <div class="tool" onclick="window.open(`https://www.instagram.com/@frediezra`)">
+      <div class="tool" onclick="window.open(`https://www.instagram.com/official_arnold.1`)">
         <i class="fab fa-instagram"></i>
         <h3>Support Owner Instagram Page by follow</h3>
         <p class="muted">Instagram</p>
@@ -420,22 +427,24 @@
         </div>
         <div class="controls">
           <button onclick="togglePlay('audio1')"><i class="fas fa-play"></i> PLAY</button>
-          <div class="progress"><div class="progress-fill" id="progress1"></div></div>
+          <div class="progress">
+            <div class="progress-fill" id="progress1"></div>
+          </div>
           <span class="time" id="time1">0:00</span>
         </div>
-        <audio id="audio1" src="https://files.catbox.moe/gkpx4n.mp3"></audio>
+        <audio id="audio1" src="https://files.catbox.moe/vkq31o.mp3"></audio>
       </div>
     </div>
-      
-        <!-- FOOTER -->
-  <div class="menu-footer">
-            © 2026 Tech Expert & Fee Tech | All right reserved 
-        </div>
 
-  <!-- CONTACT ICON -->
-  <a href="https://fredi-ai-contacts-us.vercel.app" class="contact-fab" title="Contact Us">
-    <i class="fas fa-headset"></i>
-  </a>
+    <!-- FOOTER -->
+    <div class="menu-footer">
+      © 2026 VIPER MD & Fee Tech | All right reserved
+    </div>
+
+    <!-- CONTACT ICON -->
+    <a href="https://starboy-ai-contacts-us.vercel.app" class="contact-fab" title="Contact Us">
+      <i class="fas fa-headset"></i>
+    </a>
   </main>
   <script>
     // Smooth animations
@@ -467,17 +476,17 @@
             const batteryPercent = Math.round(battery.level * 100);
             const batteryElement = document.getElementById('battery');
             batteryElement.innerText = `${batteryPercent}%`;
-            
+
             // Add battery icon based on level
             let batteryIcon = 'fa-bolt';
             if (batteryPercent <= 20) batteryIcon = 'fa-battery-quarter';
             else if (batteryPercent <= 50) batteryIcon = 'fa-battery-half';
             else if (batteryPercent <= 80) batteryIcon = 'fa-battery-three-quarters';
             else if (batteryPercent <= 100) batteryIcon = 'fa-battery-full';
-            
+
             batteryElement.previousElementSibling.className = `fas ${batteryIcon}`;
           };
-          
+
           battery.addEventListener('levelchange', setBattery);
           battery.addEventListener('chargingchange', setBattery);
           setBattery();
@@ -492,21 +501,21 @@
       const audio = document.getElementById(id);
       const progress = document.getElementById('progress1');
       const time = document.getElementById('time1');
-      const button = document.querySelector('button[onclick*="'+id+'"]');
-      
+      const button = document.querySelector('button[onclick*="' + id + '"]');
+
       if (audio.paused) {
         audio.play();
         button.innerHTML = '<i class="fas fa-pause"></i> PAUSE';
-        
+
         audio.ontimeupdate = () => {
           const percent = (audio.currentTime / audio.duration) * 100;
           progress.style.width = percent + '%';
-          
+
           const minutes = Math.floor(audio.currentTime / 60);
           const seconds = Math.floor(audio.currentTime % 60);
           time.textContent = `${minutes}:${String(seconds).padStart(2, '0')}`;
         };
-        
+
         audio.onended = () => {
           progress.style.width = '0%';
           time.textContent = '0:00';
@@ -553,4 +562,5 @@
     window.addEventListener('load', init);
   </script>
 </body>
-  </html>
+
+</html>

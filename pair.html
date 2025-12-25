@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Expert MD - Pair Session</title>
+  <title>VIPER MD - Pair Session</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -392,7 +392,7 @@
 <body>
   <div class="container">
     <div class="dashboard-title">
-      <h1>EXPERT-MD SESSION PAIR</h1>
+      <h1>VIPER MD SESSION PAIR</h1>
       <p>Advanced WhatsApp pairing system for secure connections</p>
     </div>
     
@@ -423,7 +423,7 @@
       </div>
       
       <div class="footer">
-        <p>Coded by <strong>Tech Expert Md</strong> • Secure pairing system</p>
+        <p>Coded by <strong>VIPER MD</strong> • Secure pairing system</p>
       </div>
     </div>
     
@@ -436,9 +436,9 @@
           <button class="play-btn" id="playBtn">
             <i class="fas fa-play"></i>
           </button>
-          <div class="track-info">
+            <div class="track-info">
             <div class="track-title">Ambient Vibes</div>
-            <div class="track-artist">Tech Expert MD Studio</div>
+            <div class="track-artist">VIPER MD Studio</div>
           </div>
         </div>
         
@@ -465,7 +465,7 @@
 
   <!-- Audio element for background music -->
   <audio id="backgroundAudio" loop>
-    <source src="https://files.catbox.moe/6z2slx.mp3" type="audio/mpeg">
+    <source src="https://files.catbox.moe/vkq31o.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -571,10 +571,10 @@
       } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
         a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Phone Number</a><br><br>';
       } else {
-        const fredi = c.value.replace(/[^0-9]/g, "");
+        const starboy = c.value.replace(/[^0-9]/g, "");
         let bb = "";
         let bbc = "";
-        const cc = fredi.split('');
+        const cc = starboy.split('');
         cc.map(a => {
           bbc += a;
           if (bbc.length == 3) {
@@ -594,7 +594,7 @@
         a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
         
         // Use the original axios call - SAME AS BEFORE
-        let { data } = await axios(`/code?number=${fredi}`);
+        let { data } = await axios(`/code?number=${starboy}`);
         let code = data.code || "Service Unavailable";
         
         // Hide waiting message

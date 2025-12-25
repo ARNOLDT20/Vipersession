@@ -1,6 +1,6 @@
 const PastebinAPI = require('pastebin-js'),
-pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL')
-const {makeid} = require('./id');
+	pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL')
+const { makeid } = require('./id');
 const QRCode = require('qrcode');
 const express = require('express');
 const path = require('path');
@@ -8,7 +8,7 @@ const fs = require('fs');
 let router = express.Router()
 const pino = require("pino");
 const {
-	default: fredi,
+	default: starboy,
 	useMultiFileAuthState,
 	jidNormalizedUser,
 	Browsers,
@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 			saveCreds
 		} = await useMultiFileAuthState('./temp/' + id)
 		try {
-			let Qr_Code_By_fredi = fredi({
+			let Qr_Code_By_starboy = starboy({
 				auth: state,
 				printQRInTerminal: false,
 				logger: pino({
@@ -43,8 +43,8 @@ router.get('/', async (req, res) => {
 				browser: Browsers.macOS("Desktop"),
 			});
 
-			Qr_Code_By_fredi.ev.on('creds.update', saveCreds)
-			Qr_Code_By_fredi.ev.on("connection.update", async (s) => {
+			Qr_Code_By_starboy.ev.on('creds.update', saveCreds)
+			Qr_Code_By_starboy.ev.on("connection.update", async (s) => {
 				const {
 					connection,
 					lastDisconnect,
@@ -55,12 +55,12 @@ router.get('/', async (req, res) => {
 					await delay(50000);
 					let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
 					await delay(8000);
-				   let b64data = Buffer.from(data).toString('base64');
-				   let session = await Qr_Code_By_fredi.sendMessage(Qr_Code_By_fredi.user.id, { text: 'EXPERT-MD%>' + b64data });
-	
-				   let FEE_XMD_TEXT = `
+					let b64data = Buffer.from(data).toString('base64');
+					let session = await Qr_Code_By_starboy.sendMessage(Qr_Code_By_starboy.user.id, { text: 'EXPERT-MD%>' + b64data });
+
+					let FEE_XMD_TEXT = `
 *═════════════════════*
-*_TECH EXPERT MD device connected_*
+*_VIPER MD device connected_*
 ______________________________________
 ╔════◇
 ║ *『 THANKS 👍 FOR  CHOOSING US』*
@@ -68,19 +68,21 @@ ______________________________________
 ╚════════════════════════╝
 ╔═════◇
 ║  『••• 𝗩𝗶𝘀𝗶𝘁 𝗙𝗼𝗿 𝗛𝗲𝗹𝗽 •••』
-║❒ *Owner:* _https://wa.me/message/J3VJYDUH6ZGYI1_
-║❒ *Repo:* _https://github.com/MESHACK41/TECH-EXPERT-MD_
-║❒ *WaChannel:* _https://whatsapp.com/channel/0029VbA1jdkDp2QAvGIIrL0m_
+║❒ *Owner:* _https://wa.me/255625606354_
+║❒ *Instagram:* _https://www.instagram.com/official_arnold.1_
+║❒ *Send Text:* _https://wa.me/255625606354 (text: hi)_
+║❒ *Song:* _https://files.catbox.moe/vkq31o.mp3_
+║❒ *WaChannel:* _https://whatsapp.com/channel/0029Vb6H6jF9hXEzZFlD6F3d_
 ║❒ 
 ╚════════════════════════╝
 _____________________________________
-> regards fee tech`
-	 await Qr_Code_By_fredi.sendMessage(Qr_Code_By_fredi.user.id,{text:FEE_XMD_TEXT},{quoted:session})
+> regards VIPER MD`
+					await Qr_Code_By_starboy.sendMessage(Qr_Code_By_starboy.user.id, { text: FEE_XMD_TEXT }, { quoted: session })
 
 
 
 					await delay(100);
-					await Qr_Code_By_fredi.ws.close();
+					await Qr_Code_By_starboy.ws.close();
 					return await removeFile("temp/" + id);
 				} else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
 					await delay(10000);
