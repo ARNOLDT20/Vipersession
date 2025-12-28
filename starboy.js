@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.listen(PORT, () => {
     console.log(`
-Fee Xmd Pair is Live
+viper md Pair is Live
 
  Server running on http://localhost:` + PORT)
 })
