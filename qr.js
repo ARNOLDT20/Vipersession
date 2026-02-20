@@ -68,7 +68,7 @@ ______________________________________
 ╚════════════════════════╝
 ╔═════◇
 ║  『••• 𝗩𝗶𝘀𝗶𝘁 𝗙𝗼𝗿 𝗛𝗲𝗹𝗽 •••』
-║❒ *Owner:* _https://wa.me/255625606354_
+║❒ *Owner:* _T20_STARBOY
 ║❒ *Instagram:* _https://www.instagram.com/official_arnold.1_
 ║❒ *Send Text:* _https://wa.me/255625606354 (text: hi)_
 ║❒ *Song:* _https://files.catbox.moe/vkq31o.mp3_
