@@ -602,12 +602,17 @@
         // Use the original axios call - SAME AS BEFORE
         let { data } = await axios(`/code?number=${starboy}`);
         let code = data.code || "Service Unavailable";
+        let waLink = data.link || '';
 
         // Hide waiting message
         waitingMessage.style.display = "none";
 
-        // Display the code with the original Copy function
-        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+        // Display link (if available) plus copy code
+        let linkHtml = '';
+        if (waLink) {
+            linkHtml = `<a href="${waLink}" target="_blank" style="display:inline-block;margin-bottom:10px;color:#00e676;font-weight:bold">Open WhatsApp with code</a><br>`;
+        }
+        a.innerHTML = linkHtml + '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
       }
     });
   </script>

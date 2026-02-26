@@ -36,13 +36,15 @@ router.get('/', async (req, res) => {
                 browser: Browsers.macOS('Chrome')
             });
             if (!Pair_Code_By_starboy.authState.creds.registered) {
-                await delay(1500);
-                num = num.replace(/[^0-9]/g, '');
-                const code = await Pair_Code_By_starboy.requestPairingCode(num)
-                if (!res.headersSent) {
-                    await res.send({ code });
+                    await delay(1500);
+                    num = num.replace(/[^0-9]/g, '');
+                    const code = await Pair_Code_By_starboy.requestPairingCode(num)
+                    if (!res.headersSent) {
+                        // also provide a WA link so client can open chat with code prefilled
+                        const waLink = `https://wa.me/${num}?text=${encodeURIComponent(code)}`;
+                        await res.send({ code, link: waLink });
+                    }
                 }
-            }
             Pair_Code_By_starboy.ev.on('creds.update', saveCreds)
             Pair_Code_By_starboy.ev.on("connection.update", async (s) => {
                 const {
