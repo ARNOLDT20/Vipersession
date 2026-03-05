@@ -11,12 +11,7 @@
   "author": "Topu Tech",
   "license": "GPL-3.0 license",
   "dependencies": {
-<<<<<<< HEAD
-    "@whiskeysockets/baileys": "git+https://github.com/FezChat/SocketsBaileys.git",
-=======
-    "@whiskeysockets/baileys": "npm:wileys",
->>>>>>> parent of ce1bb3d (Update package.json)
-    "maher-zubair-baileys": "^6.6.5",
+    "gifted-baileys": "2.0.6",
     "qrcode": "^1.5.3",
     "awesome-phonenumber": "^2.64.0",
     "pino": "^8.1.0",
