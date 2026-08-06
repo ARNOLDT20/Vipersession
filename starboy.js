@@ -8,10 +8,10 @@ let server = require('./qr'),
 require('events').EventEmitter.defaultMaxListeners = 500;
 app.use('/qr', server);
 app.use('/code', code);
-app.use('/pair', async (req, res, next) => {
+app.get(['/pair', '/pair/', '/pair.html'], async (req, res, next) => {
     res.sendFile(__path + '/pair.html')
 })
-app.use('/', async (req, res, next) => {
+app.get(['/', '/index.html'], async (req, res, next) => {
     res.sendFile(__path + '/index.html')
 })
 app.use(bodyParser.json());
