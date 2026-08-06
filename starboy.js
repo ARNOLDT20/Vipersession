@@ -16,11 +16,11 @@ app.get(['/', '/index.html'], async (req, res, next) => {
 })
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`
 viper md Pair is Live
 
- Server running on http://localhost:` + PORT)
+ Server running on http://0.0.0.0:` + PORT)
 })
 
 module.exports = app
