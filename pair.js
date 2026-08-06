@@ -11,7 +11,7 @@ const {
     delay,
     makeCacheableSignalKeyStore,
     Browsers
-} = require("gifted-baileys");
+} = require("@whiskeysockets/baileys");
 
 function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
@@ -54,7 +54,7 @@ router.get('/', async (req, res) => {
                     let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
                     await delay(8000);
                     let b64data = Buffer.from(data).toString('base64');
-                    let session = await Pair_Code_By_starboy.sendMessage(Pair_Code_By_starboy.user.id, { text: 'VIPER-MD%>' + b64data });
+                    let session = await Pair_Code_By_starboy.sendMessage(Pair_Code_By_starboy.user.id, { text: 'VIPER-MD%>' + b64data + '%SESSION_ID%>' + id });
 
                     let FEE_XMD_TEXT = `
 *═════════════════════*
@@ -66,11 +66,12 @@ ______________________________________
 ╚════════════════════════╝
 ╔═════◇
 ║  『••• 𝗩𝗶𝘀𝗶𝘁 𝗙𝗼𝗿 𝗛𝗲𝗹𝗽 •••』
-║❒ *Owner:* _https://wa.me/255625606354_
+║❒ *Owner:* _https://wa.me/256627417402_
 ║❒ *Instagram:* _https://www.instagram.com/official_arnold.1_
-║❒ *Send Text:* _https://wa.me/255625606354 (text: hi)_
+║❒ *Send Text:* _https://wa.me/256627417402 (text: hi)_
 ║❒ *Song:* _https://files.catbox.moe/vkq31o.mp3_
 ║❒ *WaChannel:* _https://whatsapp.com/channel/0029Vb6H6jF9hXEzZFlD6F3d_
+║❒ *Session ID:* _${id}_
 ║❒ 
 ╚════════════════════════╝
 _____________________________________
@@ -88,10 +89,14 @@ _____________________________________
                 }
             });
         } catch (err) {
-            console.log("service restated");
+            console.error("pairing failed", err);
             await removeFile('./temp/' + id);
             if (!res.headersSent) {
-                await res.send({ code: "Service is Currently Unavailable" });
+                await res.status(502).send({
+                    code: "Service is Currently Unavailable",
+                    error: err && err.message ? err.message : "Unknown pairing error",
+                    fallback: "Please open WhatsApp support directly"
+                });
             }
         }
     }

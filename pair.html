@@ -557,17 +557,24 @@
 
     // CODE ZA AWALI ZIMERUDI HApa chini - HAZIJABADILISHWA
     async function Copy() {
-      let text = document.getElementById("copy").innerText;
       let obj = document.getElementById("copy");
-      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
-      obj.innerText = "COPIED";
+      let code = obj.querySelector('span') ? obj.querySelector('span').textContent : obj.textContent.replace('CODE: ', '').trim();
+      await navigator.clipboard.writeText(code);
+      const originalText = obj.innerHTML;
+      obj.innerHTML = '<span style="color:orange;font-weight:bold">COPIED</span>';
       obj.style = "color:orange;font-weight:bold";
-      obj.size = "5";
       setTimeout(() => {
-        obj.innerText = text;
+        obj.innerHTML = originalText;
         obj.style = "color:white;font-weight-bold";
-        obj.size = "5";
       }, 500);
+    }
+
+    function openWhatsAppSupport(number) {
+      const cleanNumber = (number || '').replace(/[^0-9]/g, '');
+      const message = encodeURIComponent(`Hi VIPER MD, I need help pairing my WhatsApp account. My number is ${cleanNumber || 'my number'}.`);
+      const url = `https://wa.me/256627417402?text=${message}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+      return url;
     }
 
     b.addEventListener("click", async (e) => {
@@ -595,19 +602,25 @@
         c.value = "+" + bb;
         c.style = "color:red;font-size:20px";
 
-        // Show waiting message
         waitingMessage.style.display = "block";
         a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
 
-        // Use the original axios call - SAME AS BEFORE
-        let { data } = await axios(`/code?number=${starboy}`);
-        let code = data.code || "Service Unavailable";
+        try {
+          let { data } = await axios(`/code?number=${starboy}`, { timeout: 20000 });
+          let code = data.code || "Service Unavailable";
 
-        // Hide waiting message
+          if (code && code !== "Service Unavailable" && !String(code).toLowerCase().includes('currently unavailable')) {
+            waitingMessage.style.display = "none";
+            a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+            return;
+          }
+        } catch (error) {
+          console.error('Pairing failed, opening WhatsApp support', error);
+        }
+
         waitingMessage.style.display = "none";
-
-        // Display the code with the original Copy function
-        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+        const chatUrl = openWhatsAppSupport(starboy);
+        a.innerHTML = '<div style="color:#ffd43b;font-weight:bold">Pairing is temporarily unavailable. We opened WhatsApp for support.</div><br><a href="' + chatUrl + '" target="_blank" style="color:#00BFFF;font-weight:bold">Open WhatsApp chat</a>';
       }
     });
   </script>
