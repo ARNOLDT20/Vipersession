@@ -1,8 +1,15 @@
-FROM nginx:stable-alpine
+FROM node:24-alpine
 
-# Copy site files into nginx html directory
-COPY . /usr/share/nginx/html
+WORKDIR /app
 
-EXPOSE 80
+RUN apk add --no-cache git
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY package*.json ./
+RUN npm install --legacy-peer-deps
+
+COPY . .
+
+ENV NODE_ENV=production
+EXPOSE 10000
+
+CMD ["npm", "start"]
